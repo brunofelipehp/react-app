@@ -21,8 +21,6 @@ import { Card } from '../../components/Card';
      setStudents(prevState => [...prevState, newStudent])
    }
 
-   
-
   return (
     <div className="container">
    <h1>Lista de Presença</h1>
@@ -30,7 +28,12 @@ import { Card } from '../../components/Card';
    <button onClick={handleAddStudent}>Adicionar</button>
 
    {
-     students.map(student =>  <Card name={student.name} time={student.time}/>)
+     students.map(student =>  (
+     <Card 
+     key={student.time}
+     name={student.name}
+      time={student.time}/>
+      ))
   }
    
    </div>
