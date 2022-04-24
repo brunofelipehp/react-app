@@ -23,7 +23,14 @@ import { Card } from '../../components/Card';
 
   return (
     <div className="container">
-   <h1>Lista de Presença</h1>
+      <header>
+      <h1>Lista de Presença</h1>
+      <div>
+        <strong>Bruno</strong>
+        <img src="https://github.com/brunofelipehp.png" alt="Foto de perfil" />
+      </div>
+      </header>
+   
    <input type="text" placeholder="Digite o nome..." onChange={e => setStudentName(e.target.value)} />
    <button onClick={handleAddStudent}>Adicionar</button>
 
