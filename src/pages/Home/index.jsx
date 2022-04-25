@@ -6,6 +6,7 @@ import { Card } from '../../components/Card';
  export function Home() {
    const [studentName, setStudentName] = useState('')
    const [students, setStudents] = useState([])
+   const [user, setUser] = useState({name:'', avatar:''})
 
    function handleAddStudent(){
 
@@ -22,7 +23,14 @@ import { Card } from '../../components/Card';
    }
 
    useEffect(() => {
-     console.log("useEffect foi chamado");
+    fetch('https://api.github.com/users/brunofelipehp')
+    .then(response => response.json())
+    .then(data => {
+     setUser({
+        name: data.name,
+        avatar: data.avatar_url
+      })
+    })
    }, [])
 
   return (
@@ -30,8 +38,8 @@ import { Card } from '../../components/Card';
       <header>
       <h1>Lista de Presença</h1>
       <div>
-        <strong>Bruno</strong>
-        <img src="https://github.com/brunofelipehp.png" alt="Foto de perfil" />
+        <strong>{user.name}</strong>
+        <img src={user.avatar} alt="Foto de perfil" />
       </div>
       </header>
    
