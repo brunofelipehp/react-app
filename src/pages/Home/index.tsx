@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './styles.css';
 
 import { Card, CardProps } from '../../components/Card';
@@ -34,8 +35,9 @@ interface User {
 
    useEffect(() => {
     async function fetchData(){
-     const response = await fetch('https://api.github.com/users/brunofelipehp')
-    const data = await response.json() as ProfileResponse;
+      const url = 'https://api.github.com/users/brunofelipehp'
+      const response = await axios.get(url)
+      const data = await response.data as ProfileResponse
     
      setUser({
         name: data.name,
